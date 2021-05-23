@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import NavBar from './navbar';
+import Lectures from './lectures';
 import Counter from './counter';
 import Controls from './controls';
 
@@ -16,9 +17,9 @@ const About = (props) => {
     </div>
   );
 };
-const Welcome = (props) => {
-  return <div>Welcome</div>;
-};
+// const Welcome = (props) => {
+//   return <div>Welcome</div>;
+// };
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
@@ -38,8 +39,8 @@ const App = (props) => {
       <div className={checkTheme()}>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/lectures" component={About} />
+          <Route exact path="/" component={Lectures} />
+          <Route exact path="/lectures/new" component={About} />
           <Route path="/lectures/:id" component={Test} />
           <Route render={() => (<FallBack />)} />
         </Switch>

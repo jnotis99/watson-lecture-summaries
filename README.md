@@ -1,4 +1,4 @@
-# Starterpack for React and Redux
+# Watson Lecture Summarizer
 
 ## Joseph Notis, May 2021
 

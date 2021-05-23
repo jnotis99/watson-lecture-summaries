@@ -1,17 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => createStyles({
+const useStyles = makeStyles({
   root: {
-    // backgroundColor: '#333',
-    margin: 0,
+    backgroundColor: '#eee',
+    padding: '15px 25px',
   },
   navItem: {
     paddingRight: '50px',
   },
-}));
+});
 
 const NavBar = (props) => {
   const styles = useStyles();
@@ -19,9 +19,7 @@ const NavBar = (props) => {
     <nav className={styles.root}>
       <Box flexDirection="row">
         <NavLink to="/" exact className={styles.navItem}>Home</NavLink>
-        <NavLink to="/lectures" exact className={styles.navItem}>About</NavLink>
-        <NavLink to="/lectures/id1" className={styles.navItem}>test id1</NavLink>
-        <NavLink to="/lectures/id2" className={styles.navItem}>test id2</NavLink>
+        <NavLink to="/lectures/new" exact className={styles.navItem}>Add Lecture</NavLink>
       </Box>
     </nav>
   );
