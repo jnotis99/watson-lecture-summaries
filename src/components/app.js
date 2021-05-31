@@ -6,13 +6,10 @@ import {
 import NavBar from './navbar';
 import Lectures from './lectures';
 import NewLecture from './newLecture';
+import Lecture from './lecture';
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
-};
-
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
 };
 
 const App = (props) => {
@@ -23,7 +20,7 @@ const App = (props) => {
         <Switch>
           <Route exact path="/" component={Lectures} />
           <Route exact path="/lectures/new" component={NewLecture} />
-          <Route path="/lectures/:id" component={Test} />
+          <Route path="/lectures/:id" component={Lecture} />
           <Route render={() => (<FallBack />)} />
         </Switch>
       </div>

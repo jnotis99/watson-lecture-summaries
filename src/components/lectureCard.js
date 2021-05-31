@@ -18,12 +18,16 @@ const useStyles = makeStyles({
 
 const LectureCard = (props) => {
   const styles = useStyles();
+  const linkObj = {
+    pathname: `/lectures/${props.lecture.id}`,
+    state: props.lecture,
+  };
 
   return (
-    <Link to={() => { return `/lectures/${props.lecture.id}`; }} className={styles.root}>
+    <Link to={linkObj} className={styles.root}>
       <Card variant="outlined">
         <CardContent>
-          <Typography variant="h6">{props.lecture.name}</Typography>
+          <Typography variant="h6">{props.lecture.title}</Typography>
         </CardContent>
         <CardActions>
           <Button size="small" variant="contained">Learn More</Button>

@@ -1,9 +1,10 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import LectureCard from './lectureCard';
+import { getLectures } from '../redux/actions';
 
 const useStyles = makeStyles({
   root: {
@@ -14,32 +15,24 @@ const useStyles = makeStyles({
 const Lectures = (props) => {
   const styles = useStyles();
 
-  const lectureArr = [
-    {
-      id: 1,
-      name: 'Lecture 1',
-      description: 'Test 1',
-    },
-    {
-      id: 2,
-      name: 'Lecture 2',
-      description: 'Test 2',
-    },
-    {
-      id: 3,
-      name: 'Lecture 3',
-      description: 'Test 3',
-    },
-  ];
+  useEffect(() => {
+    props.getLectures();
+    console.log(props.lectureArr);
+  }, []);
 
   const renderLectures = () => {
-    if (lectureArr) {
-      const lecJsx = lectureArr.map((lec) => {
-        return <LectureCard lecture={lec} key={lec.id} />;
+    if (props.lectureArr) {
+      const lecJsx = props.lectureArr.map((lec) => {
+        // console.log(lec);
+        return <LectureCard lecture={lec} key={lec._id} />;
       });
       return lecJsx;
     } else return <div />;
   };
+
+  useEffect(() => {
+    console.log(props.lectureArr);
+  }, [props.lectureArr]);
 
   return (
     <Box flexDirection="column" justifyContent="center" alignItems="flex-center" className={styles.root}>
@@ -53,4 +46,10 @@ const Lectures = (props) => {
   );
 };
 
-export default Lectures;
+function mapStateToProps(reduxState) {
+  return {
+    lectureArr: reduxState.lectures.all,
+  };
+}
+
+export default withRouter(connect(mapStateToProps, { getLectures })(Lectures));
