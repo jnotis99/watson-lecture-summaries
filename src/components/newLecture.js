@@ -5,7 +5,9 @@ import {
   Container, TextField, Button,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { addLecture } from '../redux/actions';
+// import axios from 'axios';
+import { createLecture } from '../redux/actions';
+import { addLecture } from '../utils/lectureAPI';
 
 const useStyles = makeStyles({
   formInput: {
@@ -29,12 +31,14 @@ const NewLecture = (props) => {
   };
 
   const onSubmit = () => {
-    const newLecture = {
-      title,
-      text,
-    };
-
-    addLecture(newLecture, props.history);
+    // const ROOT_URL = 'http://localhost:9090/api';
+    // axios.post(`${ROOT_URL}/lectures`, { title, text }).then(() => {
+    //   props.history.push('/');
+    //   // dispatch(fetchPosts());
+    // }).catch((error) => {
+    //   console.log(error);
+    // });
+    addLecture({ title, text }, props.history);
   };
 
   return (
@@ -62,10 +66,10 @@ const NewLecture = (props) => {
         />
       </div>
       <div>
-        <Button variant="contained" type="button" disabled={checkInputs()} onClick={onSubmit()}>Summarize!</Button>
+        <Button variant="contained" type="button" disabled={checkInputs()} onClick={onSubmit}>Summarize!</Button>
       </div>
     </Container>
   );
 };
 
-export default withRouter(connect(null, { addLecture })(NewLecture));
+export default withRouter(connect(null, { createLecture })(NewLecture));

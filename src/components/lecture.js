@@ -1,45 +1,38 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Box, Container } from '@material-ui/core';
-import { getLecture } from '../redux/actions';
-// import { makeStyles } from '@material-ui/core/styles';
+import {
+  Box, IconButton, Container, Typography,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Delete } from '@material-ui/icons';
 
-// const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  lectureContent: {
+    width: '80%',
+    paddingTop: '20px',
+  },
+});
 
 const Lecture = (props) => {
-  // const styles = useStyles();
-
-  // useEffect(() => {
-  //   console.log(props.match.params.id);
-  //   getLecture(props.match.params.id);
-  //   console.log(props.currentLecture.current);
-  // }, []);
-
-  useEffect(() => {
-    getLecture(props.match.params.id);
-    console.log(props.currentLecture.current);
-  }, [props.match.params.id]);
-
-  // useEffect(() => {
-  //   getLecture(props.match.params.id);
-  //   console.log(props.currentLecture);
-  // },
-  // [props.currentLecture]);
+  const styles = useStyles();
 
   return (
-    <Container direction="column" justify="center" align="flex-start">
-      <Box flexDirection="column" justifyContent="flex-start">
-        {JSON.stringify(props.location.state)}
+    <Container direction="column" justify="center" align="flex-start" className={styles.lectureContent}>
+      <Box flexDirection="row" justifyContent="center" alignItems="center">
+        <Typography variant="h3">{props.location.state.title}</Typography>
+        <IconButton>
+          <Delete />
+        </IconButton>
       </Box>
     </Container>
   );
 };
 
-const mapStateToProps = (reduxState) => {
-  return {
-    currentLecture: reduxState.lectures,
-  };
-};
+// const mapStateToProps = (reduxState) => {
+//   return {
+//     currentLecture: reduxState.lectures,
+//   };
+// };
 
-export default withRouter(connect(mapStateToProps, { getLecture })(Lecture));
+// export default withRouter(connect(mapStateToProps, { getLecture })(Lecture));
+export default withRouter(Lecture);

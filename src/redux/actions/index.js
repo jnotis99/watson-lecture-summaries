@@ -24,7 +24,7 @@ export function getLecture(id) {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/lectures/${id}`).then((response) => {
       console.log('HERE');
-      console.log(response);
+      // console.log(response);
       dispatch({ type: ActionTypes.GET_LECTURE, payload: response.data });
     }).catch((error) => {
       console.log(error);
@@ -33,19 +33,15 @@ export function getLecture(id) {
   };
 }
 
-export function addLecture(newLecture, history) {
-  return ((dispatch) => {
-    axios.post(`${ROOT_URL}/lectures`, newLecture)
-      .then((response) => {
-        console.log('HERE');
-        history.push('/');
-        console.log(`created: ${response}`);
-      })
-      .catch((error) => {
-        console.log(error);
-        dispatch({ type: ActionTypes.ERROR_SET, error });
-      });
-  });
+export function createLecture(lecture, history) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/lectures`, lecture).then(() => {
+      history.push('/');
+      // dispatch(fetchPosts());
+    }).catch((error) => {
+      dispatch({ type: ActionTypes.ERROR_SET, error });
+    });
+  };
 }
 
 export function deleteLecture(id, history) {
