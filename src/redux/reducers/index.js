@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import CountReducer from './countReducer';
+import LectureReducer from './lectureReducer';
 
 const rootReducer = combineReducers({
-  count: CountReducer,
+  lectures: LectureReducer,
 });
 
 export default rootReducer;

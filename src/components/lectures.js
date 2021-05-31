@@ -6,7 +6,9 @@ import { Box, Typography } from '@material-ui/core';
 import LectureCard from './lectureCard';
 
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    padding: '25px 50px',
+  },
 });
 
 const Lectures = (props) => {
@@ -23,6 +25,11 @@ const Lectures = (props) => {
       name: 'Lecture 2',
       description: 'Test 2',
     },
+    {
+      id: 3,
+      name: 'Lecture 3',
+      description: 'Test 3',
+    },
   ];
 
   const renderLectures = () => {
@@ -35,8 +42,8 @@ const Lectures = (props) => {
   };
 
   return (
-    <Box flexDirection="column" justifyContent="center" alignItems="flex-start" className={styles.root}>
-      <Box className="posts-header">
+    <Box flexDirection="column" justifyContent="center" alignItems="flex-center" className={styles.root}>
+      <Box className="posts-header" alignSelf="flex-start">
         <Typography variant="h3">Lectures</Typography>
       </Box>
       <Box display="flex" flexWrap="wrap" justifyContent="flex-start" alignItems="center">

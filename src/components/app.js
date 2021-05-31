@@ -5,21 +5,7 @@ import {
 } from 'react-router-dom';
 import NavBar from './navbar';
 import Lectures from './lectures';
-import Counter from './counter';
-import Controls from './controls';
-
-const About = (props) => {
-  return (
-    <div>
-      <p>All there is to know about me</p>
-      <Counter />
-      <Controls />
-    </div>
-  );
-};
-// const Welcome = (props) => {
-//   return <div>Welcome</div>;
-// };
+import NewLecture from './newLecture';
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
@@ -30,17 +16,13 @@ const Test = (props) => {
 };
 
 const App = (props) => {
-  const checkTheme = () => {
-    return (props.darkTheme ? ('app bp3-dark') : ('app'));
-  };
-
   return (
     <Router>
-      <div className={checkTheme()}>
+      <div>
         <NavBar />
         <Switch>
           <Route exact path="/" component={Lectures} />
-          <Route exact path="/lectures/new" component={About} />
+          <Route exact path="/lectures/new" component={NewLecture} />
           <Route path="/lectures/:id" component={Test} />
           <Route render={() => (<FallBack />)} />
         </Switch>

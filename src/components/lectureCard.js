@@ -8,7 +8,8 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '550px',
+    minWidth: '350px',
+    maxWidth: '550px',
     margin: '10px 25px',
     textDecoration: 'none',
   },
@@ -22,10 +23,10 @@ const LectureCard = (props) => {
     <Link to={() => { return `/lectures/${props.lecture.id}`; }} className={styles.root}>
       <Card variant="outlined">
         <CardContent>
-          <Typography>{props.lecture.name}</Typography>
+          <Typography variant="h6">{props.lecture.name}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button size="small" variant="contained">Learn More</Button>
         </CardActions>
       </Card>
     </Link>
