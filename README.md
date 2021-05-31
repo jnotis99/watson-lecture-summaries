@@ -1,6 +1,6 @@
 # Watson Lecture Summarizer
 
-## Joseph Notis, May 2021
+## May 2021
 
 ### Description
 
