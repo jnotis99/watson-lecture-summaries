@@ -1,4 +1,5 @@
 # Watson Lecture Summarizer
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a6d596b1-9b84-48b9-9a09-bb04238b34ba/deploy-status)](https://app.netlify.com/sites/lecassist/deploys)
 
 ## May 2021
 

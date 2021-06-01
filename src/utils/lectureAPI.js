@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://watson-lecture-summaries.herokuapp.com/api';
 
 export function addLecture(newLecture, history) {
   axios.post(`${ROOT_URL}/lectures`, newLecture).then(() => {
