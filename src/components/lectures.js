@@ -17,7 +17,7 @@ const Lectures = (props) => {
 
   useEffect(() => {
     props.getLectures();
-    console.log(props.lectureArr);
+    // console.log(props.lectureArr);
   }, []);
 
   const renderLectures = () => {
@@ -30,9 +30,9 @@ const Lectures = (props) => {
     } else return <div />;
   };
 
-  useEffect(() => {
-    console.log(props.lectureArr);
-  }, [props.lectureArr]);
+  // useEffect(() => {
+  //   console.log(props.lectureArr);
+  // }, [props.lectureArr]);
 
   return (
     <Box flexDirection="column" justifyContent="center" alignItems="flex-center" className={styles.root}>
