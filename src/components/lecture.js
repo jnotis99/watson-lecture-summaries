@@ -30,17 +30,19 @@ const Lecture = (props) => {
     const { concepts } = props.location.state.nluOutput;
     if (concepts) {
       const lectureJsx = concepts.map((concept) => {
-        return (
-          <ListItem key={concept.text}>
-            <Box display="flex" flexDirection="row" justifyContent="space-around" alignItems="center">
-              <Typography variant="h6" className={styles.listText}>{concept.text}</Typography>
-              <Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-                <a href={concept.dbpedia_resource} target="blank" rel="noreferrer"><Typography variant="body1">Learn more on DBPedia<LaunchIcon fontSize="small" /></Typography>
-                </a>
+        if (concept.relevance > 0.6) {
+          return (
+            <ListItem key={concept.text}>
+              <Box display="flex" flexDirection="row" justifyContent="space-around" alignItems="center">
+                <Typography variant="h6" className={styles.listText}>{concept.text}</Typography>
+                <Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
+                  <a href={concept.dbpedia_resource} target="blank" rel="noreferrer"><Typography variant="body1">Learn more on DBPedia<LaunchIcon fontSize="small" /></Typography>
+                  </a>
+                </Box>
               </Box>
-            </Box>
-          </ListItem>
-        );
+            </ListItem>
+          );
+        } else return <span />;
       });
       return <List>{lectureJsx}</List>;
     } else return <Typography variant="h5">Watson couldn&apos;t find any key concepts</Typography>;

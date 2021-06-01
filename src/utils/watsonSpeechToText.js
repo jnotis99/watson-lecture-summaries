@@ -7,16 +7,19 @@ const speechToText = new SpeechToTextV1({
   serviceUrl: 'https://api.us-south.speech-to-text.watson.cloud.ibm.com',
 });
 
-const params = {
+export default function analyzeSTT(filename) {
+  const params = {
   // From file
-  audio: fs.createReadStream('./resources/speech.wav'),
-  contentType: 'audio/l16; rate=44100',
-};
+    audio: fs.createReadStream(filename),
+    contentType: 'audio/l16; rate=44100',
+  };
 
-speechToText.recognize(params)
-  .then((response) => {
-    console.log(JSON.stringify(response.result, null, 2));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  return speechToText.recognize(params)
+    .then((response) => {
+      console.log(JSON.stringify(response.result, null, 2));
+      return response.result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}

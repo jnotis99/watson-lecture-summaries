@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
@@ -23,12 +23,21 @@ const useStyles = makeStyles({
 const NewLecture = (props) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  const [buttonText, setButtonText] = useState('Summarize!');
 
   const styles = useStyles();
 
   const checkInputs = () => {
-    return title === '' || text === '';
+    return (title === '' || text === '');
   };
+
+  useEffect(() => {
+    if (checkInputs()) {
+      setButtonText('Fill in lecture title and text!');
+    } else {
+      setButtonText('Summarize!');
+    }
+  }, [title, text]);
 
   const onSubmit = () => {
     // const ROOT_URL = 'http://localhost:9090/api';
@@ -38,6 +47,7 @@ const NewLecture = (props) => {
     // }).catch((error) => {
     //   console.log(error);
     // });
+    setButtonText('Summarizing');
     addLecture({ title, text }, props.history);
   };
 
@@ -66,7 +76,7 @@ const NewLecture = (props) => {
         />
       </div>
       <div>
-        <Button variant="contained" type="button" disabled={checkInputs()} onClick={onSubmit}>Summarize!</Button>
+        <Button variant="contained" type="button" disabled={checkInputs()} onClick={onSubmit}>{buttonText}</Button>
       </div>
     </Container>
   );
