@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Delete } from '@material-ui/icons';
+import { deleteLecture } from '../utils/lectureAPI';
 
 const useStyles = makeStyles({
   lectureContent: {
@@ -16,23 +17,20 @@ const useStyles = makeStyles({
 const Lecture = (props) => {
   const styles = useStyles();
 
+  const onDelete = () => {
+    deleteLecture(props.location.state.id, props.history);
+  };
+
   return (
     <Container direction="column" justify="center" align="flex-start" className={styles.lectureContent}>
-      <Box flexDirection="row" justifyContent="center" alignItems="center">
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
         <Typography variant="h3">{props.location.state.title}</Typography>
-        <IconButton>
-          <Delete />
+        <IconButton onClick={onDelete}>
+          <Delete fontSize="large" />
         </IconButton>
       </Box>
     </Container>
   );
 };
 
-// const mapStateToProps = (reduxState) => {
-//   return {
-//     currentLecture: reduxState.lectures,
-//   };
-// };
-
-// export default withRouter(connect(mapStateToProps, { getLecture })(Lecture));
 export default withRouter(Lecture);
