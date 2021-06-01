@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   Box, IconButton, Container, Typography, List, ListItem,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Delete } from '@material-ui/icons';
 import LaunchIcon from '@material-ui/icons/Launch';
-import { deleteLecture } from '../utils/lectureAPI';
 import '../style.scss';
+import { getLecture, deleteLecture } from '../redux/actions';
 
 const useStyles = makeStyles({
   lectureContent: {
@@ -22,8 +23,16 @@ const useStyles = makeStyles({
 const Lecture = (props) => {
   const styles = useStyles();
 
+  useEffect(() => {
+    props.getLecture(props.match.params.id);
+  }, []);
+
+  useEffect(() => {
+    props.getLecture(props.match.params.id);
+  }, [props.match.params.id]);
+
   const onDelete = () => {
-    deleteLecture(props.location.state.id, props.history);
+    props.deleteLecture(props.location.state.id, props.history);
   };
 
   const renderConcepts = () => {
@@ -42,33 +51,39 @@ const Lecture = (props) => {
               </Box>
             </ListItem>
           );
-        } else return <span />;
+        } else return <span key={concept.text} />;
       });
-      return <List>{lectureJsx}</List>;
+      return (
+        <Box>
+          <Typography variant="h5">Key Concepts</Typography>
+          <List>
+            {lectureJsx}
+          </List>
+        </Box>
+      );
     } else return <Typography variant="h5">Watson couldn&apos;t find any key concepts</Typography>;
   };
 
   return (
     <Container direction="column" justify="center" align="flex-start" className={styles.lectureContent}>
       <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
-        <Typography variant="h3">{props.location.state.title}</Typography>
+        <Typography variant="h3">{props.lecture.title}</Typography>
         <IconButton onClick={onDelete}>
           <Delete fontSize="large" />
         </IconButton>
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
-        <Typography variant="h4">Key Concepts</Typography>
         { renderConcepts() }
       </Box>
     </Container>
   );
 };
 
-// function mapStateToProps(reduxState) {
-//   return {
-//     lectureArr: reduxState.lectures.all,
-//   };
-// }
+function mapStateToProps(reduxState) {
+  return {
+    lecture: reduxState.lectures.current,
+  };
+}
 
-// export default withRouter(connect(mapStateToProps, { getLecture })(Lecture));
-export default withRouter(Lecture);
+export default withRouter(connect(mapStateToProps, { getLecture, deleteLecture })(Lecture));
+// export default withRouter(Lecture);

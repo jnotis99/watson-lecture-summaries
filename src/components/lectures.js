@@ -30,10 +30,6 @@ const Lectures = (props) => {
     } else return <div />;
   };
 
-  // useEffect(() => {
-  //   console.log(props.lectureArr);
-  // }, [props.lectureArr]);
-
   return (
     <Box flexDirection="column" justifyContent="center" alignItems="flex-center" className={styles.root}>
       <Box className="posts-header" alignSelf="flex-start">

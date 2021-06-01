@@ -7,7 +7,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 // import axios from 'axios';
 import { createLecture } from '../redux/actions';
-import { addLecture } from '../utils/lectureAPI';
+// import { addLecture } from '../utils/lectureAPI';
 
 const useStyles = makeStyles({
   formInput: {
@@ -24,6 +24,7 @@ const NewLecture = (props) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [buttonText, setButtonText] = useState('Summarize!');
+  const [isSummarizing, setIsSummarizing] = useState(false);
 
   const styles = useStyles();
 
@@ -40,15 +41,10 @@ const NewLecture = (props) => {
   }, [title, text]);
 
   const onSubmit = () => {
-    // const ROOT_URL = 'http://localhost:9090/api';
-    // axios.post(`${ROOT_URL}/lectures`, { title, text }).then(() => {
-    //   props.history.push('/');
-    //   // dispatch(fetchPosts());
-    // }).catch((error) => {
-    //   console.log(error);
-    // });
     setButtonText('Summarizing');
-    addLecture({ title, text }, props.history);
+    // addLecture({ title, text }, props.history);
+    setIsSummarizing(true);
+    props.createLecture({ title, text }, props.history);
   };
 
   return (
@@ -76,7 +72,7 @@ const NewLecture = (props) => {
         />
       </div>
       <div>
-        <Button variant="contained" type="button" disabled={checkInputs()} onClick={onSubmit}>{buttonText}</Button>
+        <Button variant="contained" type="button" disabled={checkInputs() && isSummarizing} onClick={onSubmit}>{buttonText}</Button>
       </div>
     </Container>
   );

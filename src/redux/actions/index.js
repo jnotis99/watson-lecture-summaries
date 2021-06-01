@@ -21,36 +21,34 @@ export function getLectures() {
 
 export function getLecture(id) {
   console.log(id);
-  return (dispatch) => {
+  return ((dispatch) => {
     axios.get(`${ROOT_URL}/lectures/${id}`).then((response) => {
-      console.log('HERE');
-      // console.log(response);
       dispatch({ type: ActionTypes.GET_LECTURE, payload: response.data });
     }).catch((error) => {
       console.log(error);
       dispatch({ type: ActionTypes.SET_ERROR, error });
     });
-  };
+  });
 }
 
 export function createLecture(lecture, history) {
-  return (dispatch) => {
+  return ((dispatch) => {
     axios.post(`${ROOT_URL}/lectures`, lecture).then(() => {
       history.push('/');
       // dispatch(fetchPosts());
     }).catch((error) => {
-      dispatch({ type: ActionTypes.ERROR_SET, error });
+      dispatch({ type: ActionTypes.SET_ERROR, error });
     });
-  };
+  });
 }
 
 export function deleteLecture(id, history) {
-  return (dispatch) => {
+  return ((dispatch) => {
     axios.delete(`${ROOT_URL}/lectures/${id}`)
       .then((_response) => {
         history.push('/');
       }).catch((error) => {
-        dispatch({ type: ActionTypes.ERROR_SET, error });
+        dispatch({ type: ActionTypes.SET_ERROR, error });
       });
-  };
+  });
 }
