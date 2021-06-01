@@ -5,9 +5,7 @@ import {
   Container, TextField, Button,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import axios from 'axios';
 import { createLecture } from '../redux/actions';
-// import { addLecture } from '../utils/lectureAPI';
 
 const useStyles = makeStyles({
   formInput: {
@@ -42,9 +40,8 @@ const NewLecture = (props) => {
 
   const onSubmit = () => {
     setButtonText('Summarizing');
-    // addLecture({ title, text }, props.history);
-    setIsSummarizing(true);
     props.createLecture({ title, text }, props.history);
+    setIsSummarizing(true);
   };
 
   return (

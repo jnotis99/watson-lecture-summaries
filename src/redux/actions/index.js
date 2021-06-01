@@ -6,8 +6,8 @@ export const ActionTypes = {
   SET_ERROR: 'SET_ERROR',
 };
 
-const ROOT_URL = 'https://watson-lecture-summaries.herokuapp.com/api';
-// const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'https://watson-lecture-summaries.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 
 export function getLectures() {
   return ((dispatch) => {
