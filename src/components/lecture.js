@@ -1,3 +1,10 @@
+/**
+ * lecture.js - Component for the individual lecture view
+ * Shows the lecture title, key concepts, the concepts' correspending dbpedia links
+ *  and a delete button for each lecture
+ *
+ * Joseph Notis, Spring 2021
+ */
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';

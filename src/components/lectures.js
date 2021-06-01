@@ -1,3 +1,8 @@
+/**
+ * lectures.js - Component for seeing preview of all lectures
+ *
+ * Joseph Notis, Spring 2021
+ */
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,13 +22,11 @@ const Lectures = (props) => {
 
   useEffect(() => {
     props.getLectures();
-    // console.log(props.lectureArr);
   }, []);
 
   const renderLectures = () => {
     if (props.lectureArr) {
       const lecJsx = props.lectureArr.map((lec) => {
-        // console.log(lec);
         return <LectureCard lecture={lec} key={lec._id} />;
       });
       return lecJsx;

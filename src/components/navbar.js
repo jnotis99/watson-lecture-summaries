@@ -1,3 +1,8 @@
+/**
+ * navbar.js - Navigation Bar for LecAssist
+ *
+ * Joseph Notis, Spring 2021
+ */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, IconButton, Typography } from '@material-ui/core';

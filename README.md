@@ -1,12 +1,12 @@
-# Watson Lecture Summarizer
+# LecAssist Frontend
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a6d596b1-9b84-48b9-9a09-bb04238b34ba/deploy-status)](https://app.netlify.com/sites/lecassist/deploys)
 
-## May 2021
+## Project Group 1, Spring 2021
 
 ### Description
 
-This repo contains a basic starterpack for a React/Redux frontend. It contains the following:
+This repo contains the front-end code for LecAssist - a lecture concept tool using IBM Watson Natural Language Understanding. It contains the following tools:
 
 -   npm
 -   webpack
@@ -16,6 +16,8 @@ This repo contains a basic starterpack for a React/Redux frontend. It contains t
 -   redux
 
 Routing is controlled using [react-router](https://reactrouter.com/web/example/basic).
+
+The part of the tech stack used in this repo is the React/Redux frontend. The express/mongo database and IBM Watson API calls are in the API repo.
 
 ### Installation
 
@@ -30,8 +32,8 @@ In the root directory of this project, install all the packages using `npm insta
 
 To locally run the site, `npm start`
 
-The site built using this package is intended to be deployed using [Netlify](https://www.netlify.com/)
+The site built using this package is intended to be deployed using [Netlify](https://www.netlify.com/). It is currently set up to have continuous inegration on any push to the master branch on GitHub.
 
 ### Ackowledgements
 
-This starterpack is created using the tutorials from [Dartmouth CS52: Full-Stack Web Development](https://cs52.me)
+The starterpack for this repo was created using the tutorials from [Dartmouth CS52: Full-Stack Web Development](https://cs52.me)
