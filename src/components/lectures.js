@@ -1,5 +1,5 @@
 /**
- * lectures.js - Component for seeing preview of all lectures
+ * lectures.js - Component for seeing preview of all lectures (landing page)
  *
  * Joseph Notis, Spring 2021
  */

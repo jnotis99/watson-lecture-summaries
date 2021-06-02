@@ -1,3 +1,8 @@
+/**
+ * newLecture.js - Component for adding a lecture and creating its summarized concepts
+ *
+ * Joseph Notis, Spring 2021
+ */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -21,6 +26,7 @@ const useStyles = makeStyles({
 const NewLecture = (props) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  // change button text based on form action (insufficient text, ready to summarize, summarizing in process)
   const [buttonText, setButtonText] = useState('Summarize!');
   const [isSummarizing, setIsSummarizing] = useState(false);
 
@@ -69,7 +75,7 @@ const NewLecture = (props) => {
         />
       </div>
       <div>
-        <Button variant="contained" type="button" disabled={checkInputs() && isSummarizing} onClick={onSubmit}>{buttonText}</Button>
+        <Button variant="contained" type="button" disabled={checkInputs() || isSummarizing} onClick={onSubmit}>{buttonText}</Button>
       </div>
     </Container>
   );
