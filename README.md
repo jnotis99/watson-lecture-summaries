@@ -34,6 +34,8 @@ To locally run the site, `npm start`
 
 The site built using this package is intended to be deployed using [Netlify](https://www.netlify.com/). It is currently set up to have continuous inegration on any push to the master branch on GitHub.
 
+In [./redux/actions/index.js](./redux/actions/index.js), the `ROOT_URL` variable must be set to the URL of the API to which you would like to connect your frontend.
+
 ### Ackowledgements
 
 The starterpack for this repo was created using the tutorials from [Dartmouth CS52: Full-Stack Web Development](https://cs52.me)

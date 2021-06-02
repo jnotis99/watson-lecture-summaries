@@ -1,3 +1,9 @@
+/**
+ * app.js - top-level file for the React webapp
+ * Contains the router and fallback component
+ *
+ * Spring 2021
+ */
 import React from 'react';
 import '../style.scss';
 import {
@@ -8,10 +14,12 @@ import Lectures from './lectures';
 import NewLecture from './newLecture';
 import Lecture from './lecture';
 
+// Fallback component for incorrect URLs
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
 
+// Set up routing in app
 const App = (props) => {
   return (
     <Router>

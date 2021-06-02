@@ -1,10 +1,15 @@
+/**
+ * lectureCard.js - small view of the lecture's title that is seen in the landing page (all lectures)
+ * Displays the title and links to a view of the individual lecture's key concepts
+ *
+ * Joseph Notis, Spring 2021
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Button, Card, CardActions, CardContent, Typography,
 } from '@material-ui/core';
-// import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
   root: {

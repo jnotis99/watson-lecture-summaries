@@ -1,3 +1,9 @@
+/**
+ * /redux/actions/index.js - redux actions
+ * All API calls occur here, and the dispatched ActionType and payload is sent to the reducers
+ *
+ * Joseph Notis, Spring 2021
+ */
 import axios from 'axios';
 
 export const ActionTypes = {
@@ -6,8 +12,8 @@ export const ActionTypes = {
   SET_ERROR: 'SET_ERROR',
 };
 
-// const ROOT_URL = 'https://watson-lecture-summaries.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://watson-lecture-summaries.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api'; // FOR LOCAL TESTING
 
 export function getLectures() {
   return ((dispatch) => {

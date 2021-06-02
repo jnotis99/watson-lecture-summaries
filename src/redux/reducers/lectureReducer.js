@@ -1,3 +1,8 @@
+/**
+ * redux/reducers/lectureReducer.js - handles all dispatched data sent from actions (API calls)
+ *
+ * Spring 2021
+ */
 import { ActionTypes } from '../actions';
 
 const initialState = {
